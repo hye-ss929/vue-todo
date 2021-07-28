@@ -4,28 +4,42 @@
     <div class="addBox">
       <i class="fas fa-plus" v-on:click="addTodo"></i>
     </div>
+    <Modal v-if="showModal" @close="showModal = false">
+      <h3 slot="header">
+        경고
+        <i class="closeModalBtn fas fa-times" v-on:click="showModal=false"></i></h3>
+      <h4 slot="body">무언가를 입력하세요</h4>
+      <h5 slot="footer">copy right</h5>
+    </Modal>
   </div>
 </template>
 
 <script>
+import Modal from "@/components/common/Modal";
+
 export default {
   name: "TodoInput",
   data:function (){
     return {
       todoText:"",
+      showModal:false
     }
   },
   methods:{
-    addTodo:function () {
+    addTodo() {
       if(this.todoText !== ""){
-        let obj = {completed:false, item:this.todoText}
-        localStorage.setItem(this.todoText,JSON.stringify(obj))
+        this.$emit('addTodoItem',this.todoText)
         this.clearInput();
+      }else {
+        this.showModal = !this.showModal;
       }
     },
-    clearInput:function () {
+    clearInput() {
       this.todoText = '';
     },
+  },
+  components:{
+    Modal,
   }
 }
 </script>
@@ -51,5 +65,8 @@ export default {
   i{
     padding: 10px 0;
     color:#fff;
+  }
+  .closeModalBtn{
+    color:#42b983;
   }
 </style>
