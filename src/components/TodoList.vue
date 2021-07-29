@@ -21,6 +21,7 @@ export default {
   name: "TodoList",
   methods:{
     ...mapMutations({
+      /* payload 인자는 객체{}로 */
       removeTodo:'removeOneItem',
       toggleCompleted:'toggleOneItem'
     }),
