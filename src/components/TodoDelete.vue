@@ -7,12 +7,13 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
   name: "TodoDelete",
   methods:{
-    clearAll() {
-      this.$emit('removeAllItems')
-    }
+    ...mapMutations({
+      clearAll:'removeAll'
+    })
   }
 
 }

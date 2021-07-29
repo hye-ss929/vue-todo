@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import todoApp from './modules/todoapp'
+import * as getters from './getters';
+import * as mutations from './mutations';
 
 Vue.use(Vuex)
 
@@ -17,7 +20,10 @@ const storage = {
   }
 }
 export const store = new Vuex.Store({
-  state:{
-    todoItems:storage.fetch()
-  }
+  modules:{
+    todoApp,
+  },
+  /* key : value 동일하므로 축약 가능 */
+  getters,
+  mutations,
 })

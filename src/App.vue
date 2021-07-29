@@ -1,9 +1,9 @@
 <template>
   <div>
     <TodoHeader />
-    <TodoInput v-on:addTodoItem="addOneItem"/>
-    <TodoList v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem" v-on:toggleItem="toggleOneItem"/>
-    <TodoDelete v-on:removeAllItems="removeAll"/>
+    <TodoInput />
+    <TodoList />
+    <TodoDelete />
   </div>
 
 </template>
@@ -18,30 +18,10 @@
   name: 'App',
   data() {
     return {
-      todoItems:[]
     }
   },
   methods:{
-    addOneItem(todoItem) {
-      const obj = {completed:false, item:todoItem}
-      localStorage.setItem(todoItem,JSON.stringify(obj))
-      this.todoItems.push(obj)
-    },
-    removeOneItem(todoItem,idx) {
-      this.todoItems.splice(idx,1)
-      localStorage.removeItem(todoItem.item)
-    },
-    toggleOneItem(todoItem) {
-      todoItem.completed = !todoItem.completed
-      localStorage.removeItem(todoItem.item)
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
-    },
-    removeAll() {
-      this.todoItems = [];
-      localStorage.clear()
-    }
   },
-
   components:{
     TodoHeader,
     TodoInput,
