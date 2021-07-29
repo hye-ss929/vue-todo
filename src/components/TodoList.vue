@@ -2,7 +2,9 @@
   <div class="listContainer">
     <transition-group name="list" tag="ul">
       <li v-for="(todoItem,idx) in this.storedTodoItems" v-bind:key="todoItem.item" class="shadow">
-        <i class="checkBtn fas fa-check" v-bind:class="{checkBtnCompleted:todoItem.completed}" v-on:click="toggleCompleted({todoItem})"></i>
+        <i class="checkBtn fas fa-check"
+           v-bind:class="{checkBtnCompleted:todoItem.completed}"
+           v-on:click="toggleCompleted({todoItem})"></i>
         <span v-bind:class="{textCompleted:todoItem.completed}" v-bind:key="idx">{{ todoItem.item }}</span>
         <span class="removeBtn" v-on:click="removeTodo({todoItem,idx})">
           <i class="fas fa-trash-alt"></i>

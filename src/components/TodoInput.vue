@@ -7,7 +7,8 @@
     <Modal v-if="showModal" @close="showModal = false">
       <h3 slot="header">
         경고
-        <i class="closeModalBtn fas fa-times" v-on:click="showModal=false"></i></h3>
+        <i class="closeModalBtn fas fa-times" v-on:click="showModal=false"></i>
+      </h3>
       <h4 slot="body">무언가를 입력하세요</h4>
       <h5 slot="footer">copy right</h5>
     </Modal>
@@ -19,7 +20,7 @@ import Modal from "@/components/common/Modal";
 
 export default {
   name: "TodoInput",
-  data:function (){
+  data(){
     return {
       todoText:"",
       showModal:false
